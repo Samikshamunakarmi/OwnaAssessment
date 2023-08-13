@@ -193,25 +193,25 @@ namespace OwnaAssessment
             Console.WriteLine(" Enter the book's cover image Url");
             var coverImageUrl = Console.ReadLine();
 
-            Console.WriteLine("Select the authors by their Id (comma seperated for multiple authors;)");
+            Console.WriteLine("Select the authors by their Name (comma seperated for multiple authors;)");
 
-            var authorIdsInput = Console.ReadLine().Split(',');
+            var authorNamesInput = Console.ReadLine().Split(',');
+            List<string> authorNames = new List<string>();
 
-            List<int> authorIds = new List<int>();
-            foreach (var author in authorIdsInput)
+            //List<int> authorIds = new List<int>();
+            foreach (var authorName in authorNamesInput)
             {
-                if(int.TryParse(author.Trim(), out int id))
-                {
-                    authorIds.Add(id);
-                }
-                else { Console.WriteLine($"Invalid author ID: {author}.Skipping. "); }
+
+                authorNames.Add(authorName);
+                
+                
             }
 
             var newBook = new Book { Id= ++bookCounter, Title=title, Description= description, CoverImageUrl= coverImageUrl };
 
-            foreach(var id in authorIds)
+            foreach(var name in authorNames)
             {
-                var author= authors.FirstOrDefault(x => x.Id == id);
+                var author= authors.First(x => x.Name == name);
                 if(author != null)
                 {
                    newBook.Authors.Add(author);
@@ -219,7 +219,7 @@ namespace OwnaAssessment
                 }
                 else
                 {
-                    Console.WriteLine($"Author with Id{id} not found. Skipping.");
+                    Console.WriteLine($"Author with Name{name} not found. Skipping.");
 
                 }
             }
