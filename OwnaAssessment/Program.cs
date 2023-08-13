@@ -193,7 +193,7 @@ namespace OwnaAssessment
             Console.WriteLine(" Enter the book's cover image Url");
             var coverImageUrl = Console.ReadLine();
 
-            Console.WriteLine("Select the authors by their Name (comma seperated for multiple authors;)");
+            Console.WriteLine("Select the authors by their Id (comma seperated for multiple authors;)");
 
             var authorIdsInput = Console.ReadLine().Split(',');
 
